@@ -1,0 +1,35 @@
+## Java
+*.class
+
+## Classpaths and Projects
+.project
+.classpath
+
+## VSCode
+.vscode/
+
+## Eclipse
+.metadata
+.settings/
+
+## IntelliJ
+/.idea
+/*.iml
+/*.ipr
+/*.iws
+
+## Other
+bin/
+dist/
+build/
+gradle/
+.gradle/
+
+# OS Files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
