@@ -25,7 +25,6 @@ public class Drive extends Subsystem {
         leftSlave = new WPI_TalonSRX(RobotMap.DRIVE_TALON_LEFT_SLAVE);
         leftSlave.follow(leftMaster);
 
-
         rightMaster = new WPI_TalonSRX(RobotMap.DRIVE_TALON_RIGHT_MASTER);
         rightSlave = new WPI_TalonSRX(RobotMap.DRIVE_TALON_RIGHT_SLAVE);
         rightSlave.follow(rightMaster);
@@ -46,9 +45,10 @@ public class Drive extends Subsystem {
 
     /**
      * Raw control inputs to drive train
-     * @param speed Forward speed
+     *
+     * @param speed    Forward speed
      * @param rotation Turn speed
-     * @param square Whether or not to square input values
+     * @param square   Whether or not to square input values
      */
     public void drive(double speed, double rotation, boolean square) {
         drive.arcadeDrive(speed, rotation, square);
