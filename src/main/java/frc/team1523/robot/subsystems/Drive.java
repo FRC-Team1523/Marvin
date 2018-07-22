@@ -9,29 +9,23 @@ import frc.team1523.robot.commands.JoystickDrive;
 
 public class Drive extends Subsystem {
 
-    private WPI_TalonSRX leftMaster;
-    private WPI_TalonSRX leftSlave;
-    private WPI_TalonSRX rightMaster;
-    private WPI_TalonSRX rightSlave;
+    private WPI_TalonSRX leftMaster = new WPI_TalonSRX(RobotMap.DRIVE_TALON_LEFT_MASTER);
+    private WPI_TalonSRX leftSlave = new WPI_TalonSRX(RobotMap.DRIVE_TALON_LEFT_SLAVE);
+    private WPI_TalonSRX rightMaster = new WPI_TalonSRX(RobotMap.DRIVE_TALON_LEFT_SLAVE);
+    private WPI_TalonSRX rightSlave = new WPI_TalonSRX(RobotMap.DRIVE_TALON_RIGHT_SLAVE);
 
-    private DifferentialDrive drive;
+    private DifferentialDrive drive = new DifferentialDrive(leftMaster, rightMaster);
 
     /**
      * Class that handles the drive mechanisms
      */
     public Drive() {
         //For mecanum drive one of the sides has to be inverted for it to drive straight it will not always be thr left side
-        leftMaster = new WPI_TalonSRX(RobotMap.DRIVE_TALON_LEFT_MASTER);
-        leftSlave = new WPI_TalonSRX(RobotMap.DRIVE_TALON_LEFT_SLAVE);
         leftSlave.follow(leftMaster);
 
-        rightMaster = new WPI_TalonSRX(RobotMap.DRIVE_TALON_RIGHT_MASTER);
-        rightSlave = new WPI_TalonSRX(RobotMap.DRIVE_TALON_RIGHT_SLAVE);
         rightSlave.follow(rightMaster);
         rightMaster.setInverted(true);
         rightSlave.setInverted(true);
-
-        drive = new DifferentialDrive(leftMaster, rightMaster);
     }
 
     /**
