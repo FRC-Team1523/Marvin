@@ -1,7 +1,9 @@
 package frc.team1523.robot;
 
 import com.kauailabs.navx.frc.AHRS;
-import edu.wpi.first.wpilibj.*;
+import edu.wpi.first.wpilibj.IterativeRobot;
+import edu.wpi.first.wpilibj.PowerDistributionPanel;
+import edu.wpi.first.wpilibj.SPI;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.team1523.robot.subsystems.Drive;
@@ -10,18 +12,15 @@ import frc.team1523.robot.subsystems.Drive;
 public class Robot extends IterativeRobot {
     public static OI oi;
     public static Drive drive;
-    public static PowerDistributionPanel pdp;
-    public static AHRS ahrs ;
+    public static PowerDistributionPanel pdp = new PowerDistributionPanel(RobotMap.PDP_ID);
+    public static AHRS ahrs = new AHRS(SPI.Port.kMXP);
 
     @Override
     public void robotInit() {
         oi = new OI();
         drive = new Drive();
-        pdp = new PowerDistributionPanel(RobotMap.PDP_ID);
-        ahrs = new AHRS(SPI.Port.kMXP);
 
         SmartDashboard.putData(pdp);
-        SmartDashboard.putData(ahrs);
     }
 
     @Override
@@ -56,5 +55,7 @@ public class Robot extends IterativeRobot {
     @Override
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
+        SmartDashboard.putNumber("AHRS angle", ahrs.getAngle());
+        SmartDashboard.putNumber("AHRS yaw", ahrs.getYaw());
     }
 }
