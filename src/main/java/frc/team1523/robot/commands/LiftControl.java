@@ -3,6 +3,7 @@ package frc.team1523.robot.commands;
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.team1523.robot.Robot;
+import frc.team1523.robot.Utilities;
 
 public class LiftControl extends Command {
     public LiftControl(){
@@ -11,7 +12,9 @@ public class LiftControl extends Command {
 
     @Override
     protected void execute() {
-        Robot.lift.setSpeed(Robot.oi.xbox.getY(GenericHID.Hand.kLeft));
+        double squared = Utilities.signedSqrt(Robot.oi.xbox.getY(GenericHID.Hand.kLeft));
+        Robot.lift.setSpeed(squared);
+
     }
 
     @Override
