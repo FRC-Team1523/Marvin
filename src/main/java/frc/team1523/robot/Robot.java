@@ -7,18 +7,24 @@ import edu.wpi.first.wpilibj.SPI;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.team1523.robot.subsystems.Drive;
+import frc.team1523.robot.subsystems.Encoders;
+import frc.team1523.robot.subsystems.Lift;
 
 
 public class Robot extends IterativeRobot {
     public static OI oi;
+    public static Encoders encoders;
     public static Drive drive;
+    public static Lift lift;
     public static PowerDistributionPanel pdp = new PowerDistributionPanel(RobotMap.PDP_ID);
     public static AHRS ahrs = new AHRS(SPI.Port.kMXP);
 
     @Override
     public void robotInit() {
         oi = new OI();
+        encoders = new Encoders();
         drive = new Drive();
+        lift = new Lift();
 
         SmartDashboard.putData(pdp);
     }
@@ -57,5 +63,6 @@ public class Robot extends IterativeRobot {
         Scheduler.getInstance().run();
         SmartDashboard.putNumber("AHRS angle", ahrs.getAngle());
         SmartDashboard.putNumber("AHRS yaw", ahrs.getYaw());
+        SmartDashboard.putNumber("Encoder", encoders.liftEncoder.get());
     }
 }
