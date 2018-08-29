@@ -1,6 +1,7 @@
 package frc.team1523.robot;
 
 import com.kauailabs.navx.frc.AHRS;
+import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.PowerDistributionPanel;
 import edu.wpi.first.wpilibj.SPI;
@@ -17,6 +18,7 @@ public class Robot extends IterativeRobot {
     public static Drive drive;
     public static Lift lift;
     public static PowerDistributionPanel pdp = new PowerDistributionPanel(RobotMap.PDP_ID);
+    private static Compressor compressor = new Compressor(1);
     public static AHRS ahrs = new AHRS(SPI.Port.kMXP);
 
     @Override
@@ -25,6 +27,8 @@ public class Robot extends IterativeRobot {
         encoders = new Encoders();
         drive = new Drive();
         lift = new Lift();
+
+        compressor.setClosedLoopControl(true);
 
         SmartDashboard.putData(pdp);
     }
