@@ -12,9 +12,8 @@ public class LiftControl extends Command {
 
     @Override
     protected void execute() {
-        double squared = Utilities.signedSqrt(Robot.oi.xbox.getY(GenericHID.Hand.kLeft));
-        Robot.lift.setSpeed(squared);
-
+//        double squared = Utilities.signedSqrt(Robot.oi.xbox.getY(GenericHID.Hand.kLeft));
+        Robot.lift.setSetpoint(Robot.oi.xbox.getY(GenericHID.Hand.kLeft)*2580);
     }
 
     @Override

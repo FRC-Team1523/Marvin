@@ -30,6 +30,8 @@ public class Robot extends IterativeRobot {
 
         compressor.setClosedLoopControl(true);
 
+        lift.enable();
+
         SmartDashboard.putData(pdp);
     }
 
@@ -68,5 +70,12 @@ public class Robot extends IterativeRobot {
         SmartDashboard.putNumber("AHRS angle", ahrs.getAngle());
         SmartDashboard.putNumber("AHRS yaw", ahrs.getYaw());
         SmartDashboard.putNumber("Encoder", encoders.liftEncoder.get());
+        if (oi.joystick.getRawButtonPressed(8)) {
+            lift.setSetpoint(0);
+        } else if (oi.joystick.getRawButtonPressed(9)) {
+            lift.setSetpoint(2580*.5);
+        } else if (oi.joystick.getRawButtonPressed(10)) {
+            lift.setSetpoint(2580);
+        }
     }
 }
