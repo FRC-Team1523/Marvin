@@ -9,4 +9,7 @@ public class RobotMap {
 
     public static int DRIVE_SPARK_LEFT = 0;
     public static int DRIVE_SPARK_RIGHT = 1;
+
+    public static int GRABBER_A = 0;
+    public static int GRABBER_B = 1;
 }
