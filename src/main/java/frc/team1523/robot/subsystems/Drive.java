@@ -1,6 +1,5 @@
 package frc.team1523.robot.subsystems;
 
-import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -29,7 +28,7 @@ public class Drive extends Subsystem {
      * @param stick Joystick Object
      */
     public void drive(Joystick stick) {
-        this.drive(-stick.getY(), -stick.getZ(), true);
+        this.drive(stick.getY(), stick.getZ(), true);
     }
 
     /**
