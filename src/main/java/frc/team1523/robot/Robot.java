@@ -75,9 +75,9 @@ public class Robot extends IterativeRobot {
         if (oi.joystick.getRawButtonPressed(8)) {
             lift.setSetpoint(0);
         } else if (oi.joystick.getRawButtonPressed(9)) {
-            lift.setSetpoint(2580*.5);
+            lift.setSetpoint(2565*.5);
         } else if (oi.joystick.getRawButtonPressed(10)) {
-            lift.setSetpoint(2580);
+            lift.setSetpoint(2565);
         }
     }
 }
