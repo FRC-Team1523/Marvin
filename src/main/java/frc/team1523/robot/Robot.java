@@ -7,10 +7,7 @@ import edu.wpi.first.wpilibj.PowerDistributionPanel;
 import edu.wpi.first.wpilibj.SPI;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import frc.team1523.robot.subsystems.Drive;
-import frc.team1523.robot.subsystems.Encoders;
-import frc.team1523.robot.subsystems.Grabber;
-import frc.team1523.robot.subsystems.Lift;
+import frc.team1523.robot.subsystems.*;
 
 
 public class Robot extends IterativeRobot {
@@ -19,6 +16,7 @@ public class Robot extends IterativeRobot {
     public static Drive drive;
     public static Lift lift;
     public static Grabber grabber;
+    public static Intake intake;
     public static PowerDistributionPanel pdp = new PowerDistributionPanel(RobotMap.PDP_ID);
     private static Compressor compressor = new Compressor(1);
     public static AHRS ahrs = new AHRS(SPI.Port.kMXP);
@@ -30,6 +28,7 @@ public class Robot extends IterativeRobot {
         drive = new Drive();
         lift = new Lift();
         grabber = new Grabber();
+        intake = new Intake();
 
         compressor.setClosedLoopControl(true);
 

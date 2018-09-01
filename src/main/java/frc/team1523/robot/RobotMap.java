@@ -12,4 +12,7 @@ public class RobotMap {
 
     public static int GRABBER_A = 0;
     public static int GRABBER_B = 1;
+
+    public static int INTAKE_MOTOR_1 = 2;
+    public static int INTAKE_MOTOR_2 = 3;
 }
